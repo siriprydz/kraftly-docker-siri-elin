@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="../assets/hero.jpg" class="hero" alt="">
+    <img src="../assets/hero.webp" class="hero" alt="">
     <h1 v-if="userStore.user">Hej {{ userStore.user.name.split(' ')[0] }}!</h1>
     <h1 v-else>Hej!</h1>
 
