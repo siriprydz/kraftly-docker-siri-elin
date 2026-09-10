@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img src="../assets/hero.png" class="hero">
+    <img src="../assets/hero.jpg" class="hero" alt="">
     <h1 v-if="userStore.user">Hej {{ userStore.user.name.split(' ')[0] }}!</h1>
     <h1 v-else>Hej!</h1>
 
@@ -39,8 +39,7 @@
 
 <script setup>
 // Dashboard. Got a bit big, clean up some day /M
-import _ from 'lodash'
-import { computed, onMounted, onBeforeUnmount } from 'vue'
+import { computed, onMounted } from 'vue'
 import { formatPrice } from '../utils/price'
 import { useUserStore } from '../stores/user'
 import { useConsumptionStore } from '../stores/consumption'
@@ -56,17 +55,9 @@ const latestMonth = computed(() => {
 
 const currentPrice = computed(() => formatPrice(consumptionStore.data?.pricePerKwh))
 
-// debounce on resize, chart.js redraws itself but we log a bit /J
-const onResize = _.debounce(() => console.log('resize', window.innerWidth), 300)
-
 onMounted(() => {
   userStore.load()
   consumptionStore.load()
-  window.addEventListener('resize', onResize)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('resize', onResize)
 })
 
 const showTips = () => {

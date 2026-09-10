@@ -5,7 +5,10 @@ dist
 coverage
 test-results
 playwright-report
-cypress/videos
-cypress/screenshots
+cypress
 docs
 *.md
+mock-api
+tests
+**/*.test.js
+**/*.spec.js
