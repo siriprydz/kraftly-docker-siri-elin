@@ -7,5 +7,7 @@ export default defineConfig({
     globals: true, // krävs för att Testing Library ska städa DOM:en mellan tester
     environment: 'jsdom',
     setupFiles: ['./tests/setup.js']
-  }
+  },
+  server: { 
+    proxy: { '/api': 'http://localhost:4000' } }
 })
